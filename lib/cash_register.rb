@@ -24,4 +24,11 @@ class CashRegister
     @items.map {|item| item.first}
   end
   
+  def void_last_transaction
+    last_item = @items.pop
+    price = last_item.last
+    @total -= price
+    # binding.pry
+  end
+  
 end
