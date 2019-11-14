@@ -1,10 +1,12 @@
+require 'pry'
+
 class CashRegister 
   attr_accessor :total, :discount
   
   @@items = []
   
   def initialize(discount = 0)
-    @total = 0
+    @total = @previous_total = 0
     @discount = discount
   end
 
@@ -12,6 +14,7 @@ class CashRegister
     for i in 1..quantity do
       @total += price
       @@items << title
+      @previous_total = price * quantity
     end
   end
   
@@ -27,6 +30,10 @@ class CashRegister
   
   def clear_items()
     self.items.clear
+  end
+  
+  def void_last_transaction() 
+    @total -= @previous_total
   end
   
 end
