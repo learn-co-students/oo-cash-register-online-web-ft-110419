@@ -38,5 +38,3 @@ class CashRegister
     @total = 0.0 if @items.length == 0
   end
 end
-
-r = CashRegister.new(100)
