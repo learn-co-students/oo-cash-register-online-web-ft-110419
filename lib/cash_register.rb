@@ -36,7 +36,7 @@ class CashRegister
       @all_items.pop
 
   end
-  def total
+  def tlotal
     @total
   end
 
