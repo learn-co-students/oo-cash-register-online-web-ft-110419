@@ -6,16 +6,16 @@ describe 'CashRegister' do
     it 'sets an instance variable @total on initialization to zero' do
       expect(cash_register.instance_variable_get(:@total)).to eq(0)
     end
-
+    
     it 'optionally takes an employee discount on initialization' do
       expect(cash_register_with_discount.discount).to eq(20)
     end
   end
 
-  describe '#total' do
-    it 'returns the current total' do
-      cash_register.total = 100
-      expect(cash_register.total).to eq(100)
+  describe '#total' do                           
+    it 'returns the current total' do            
+      cash_register.total = 100                   
+      expect(cash_register.total).to eq(100)    
     end
   end
 
@@ -28,19 +28,19 @@ describe 'CashRegister' do
       expect{cash_register.add_item("book", 5.00, 3)}.to change{cash_register.total}.by(15.00)
     end
 
-    it "doesn't forget about the previous total" do
-      cash_register.add_item("Lucky Charms", 4.5)
+    it "doesn't forget about the previous total" do        
+      cash_register.add_item("Lucky Charms", 4.5)         
       expect(cash_register.total).to eq(4.5)
-      cash_register.add_item("Ritz Crackers", 5.0)
+      cash_register.add_item("Ritz Crackers", 5.0)       
       expect(cash_register.total).to eq(9.5)
-      cash_register.add_item("Justin's Peanut Butter Cups", 2.50, 2)
+      cash_register.add_item("Justin's Peanut Butter Cups", 2.50, 2)  
       expect(cash_register.total).to eq(14.5)
     end
   end
 
-  describe '#apply_discount' do
-    context 'the cash register was initialized with an employee discount' do
-      it 'applies the discount to the total price' do
+  describe '#apply_discount' do   #create method for apply_discount
+    context 'the cash register was initialized with an employee discount' do #
+      it 'applies the discount to the total price' do              #on method apply_discount holding @discount * @total 
         cash_register_with_discount.add_item("macbook air", 1000)
         cash_register_with_discount.apply_discount
         expect(cash_register_with_discount.total).to eq(800)
